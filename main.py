@@ -2,14 +2,12 @@ import sys
 import time
 import re
 
-from playsound import playsound
+# from playsound import playsound
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
-
-from bs4 import BeautifulSoup
 
 
 # 브라우저 꺼짐 방지 옵션
@@ -30,5 +28,9 @@ while True:
         driver.refresh()
         driver.implicitly_wait(10)
     else:
-        playsound("alertsound.mp3")
+        # playsound("alertsound.mp3")
+        driver_new = webdriver.Chrome(options=chrome_options)
+        driver_new.get(url_home)
+        driver_new.implicitly_wait(10)
 
+ 
