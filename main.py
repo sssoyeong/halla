@@ -18,8 +18,8 @@ if sys.platform == 'darwin':
 
 driver = webdriver.Chrome(options=chrome_options)
 
-url_home = 'https://visithalla.jeju.go.kr/reservation/status.do'
-driver.get(url_home)
+url = 'https://visithalla.jeju.go.kr/reservation/status.do'
+driver.get(url)
 
 while True:
     count_26 = int(driver.find_element(By.XPATH, '//*[@id="TD_20231226"]/a/div/div/span').text)
@@ -29,8 +29,13 @@ while True:
         driver.implicitly_wait(10)
     else:
         # playsound("alertsound.mp3")
+
+        if count_26 < 1:
+            url_rsv = 'https://visithalla.jeju.go.kr/reservation/firstComeStep.do?visitDt=2023.12.26&courseSeq=242&cmpaCnt=1'
+        else:
+            url_rsv = 'https://visithalla.jeju.go.kr/reservation/firstComeStep.do?visitDt=2023.12.27&courseSeq=242&cmpaCnt=1'
         driver_new = webdriver.Chrome(options=chrome_options)
-        driver_new.get(url_home)
+        driver_new.get(url_rsv)
         driver_new.implicitly_wait(10)
 
  
